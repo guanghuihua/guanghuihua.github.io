@@ -39,54 +39,13 @@
     <!-- Replace To-Do List with Mathematical Questions -->
     <section id="math-questions">
         <h2>My Mathematical Questions</h2>
-        <textarea id="mathQuestionInput" rows="10" cols="50" placeholder="Enter a mathematical problem or question..."></textarea>
-        <br>
-        <button onclick="saveMathQuestion()">Save Question</button>
-        <br><br>
+        <textarea id="mathQuestionInput" rows="10" cols="50" placeholder="Enter a mathematical problem or question..."> 非线性问题;动力系统;神经网络; </textarea>
         <div id="savedMathQuestions"></div>
-    </section>
-
-    <section id="interests">
-        <h2>My Interests</h2>
-        <textarea id="interestsList" rows="10" cols="50" placeholder="Write down the topics that interest you..."></textarea>
-        <br>
-        <button onclick="saveInterests()">Save Interests</button>
-        <div id="savedInterests"></div>
     </section>
 
     <footer>
         <p>&copy; 2025 Guanghui Hua. All Rights Reserved.</p>
     </footer>
 
-    <script>
-        // Save mathematical question to localStorage
-        function saveMathQuestion() {
-            const question = document.getElementById('mathQuestionInput').value.trim();
-            if (question) {
-                const savedQuestions = document.getElementById('savedMathQuestions');
-                const newItem = document.createElement('p');
-                newItem.textContent = question;
-                savedQuestions.appendChild(newItem);
-                document.getElementById('mathQuestionInput').value = ''; // Clear input
-            } else {
-                alert('Please enter a mathematical question!');
-            }
-        }
-
-        // Save interests to localStorage
-        function saveInterests() {
-            const interests = document.getElementById('interestsList').value.trim();
-            const savedInterests = document.getElementById('savedInterests');
-
-            if (interests) {
-                const newItem = document.createElement('p');
-                newItem.textContent = interests;
-                savedInterests.appendChild(newItem);
-                document.getElementById('interestsList').value = ''; // Clear input
-            } else {
-                alert('Please enter an interest!');
-            }
-        }
-    </script>
 </body>
 </html>
