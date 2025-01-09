@@ -1,67 +1,92 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>华光辉的个人网站</title>
+    <title>Guanghui Hua's Personal Website</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>欢迎来到华光辉的个人网站</h1>
+        <h1>Welcome to Guanghui Hua's Personal Website</h1>
         <nav>
             <ul>
-                <li><a href="#about">关于我</a></li>
-                <li><a href="#blogs">我的博客</a></li>
-                <li><a href="#todo">我的待办</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#blogs">My Blogs</a></li>
+                <li><a href="#math-questions">Mathematical Questions</a></li>
+                <li><a href="#interests">My Interests</a></li>
             </ul>
         </nav>
     </header>
 
     <section id="about">
-        <h2>关于我</h2>
-        <p>您好！我是<strong>华光辉</strong>，一名应用数学专业的学生，热衷于数学建模和计算方法的应用。</p>
-        <p>您可以通过以下联系方式与我联系：<a href="mailto:guanghui-hua@qq.com">guanghui-hua@qq.com</a></p>
+        <h2>About Me</h2>
+        <p>Hello! I'm <strong>Guanghui Hua</strong>, a student majoring in Applied Mathematics. I am passionate about mathematical modeling and computational methods.</p>
+        <p>You can contact me at <a href="mailto:guanghui-hua@qq.com">guanghui-hua@qq.com</a>.</p>
     </section>
 
     <section id="blogs">
-        <h2>我的博客</h2>
-        <p>我写了两个博客，分别记录了我的工作和生活内容：</p>
+        <h2>My Blogs</h2>
+        <p>I write two blogs to document my work and personal life:</p>
         <ul>
-            <li><a href="https://www.cnblogs.com/guanghui-hua" target="_blank">工作内容博客</a></li>
-            <li><a href="https://www.overleaf.com/project" target="_blank">数学笔记</a></li>
-            <li><a href="https://www.blogger.com/blog/posts/5821182636632071255?pli=1" target="_blank">生活内容博客</a></li>
+            <li><a href="https://www.cnblogs.com/guanghui-hua" target="_blank">Work Blog</a></li>
+            <li><a href="https://www.blogger.com/blog/posts/5821182636632071255?pli=1" target="_blank">Life Blog</a></li>
+            <li><a href="https://www.overleaf.com/project" target="_blank">Mathematical Notes (Overleaf)</a></li>
         </ul>
     </section>
 
-    <section id="todo">
-        <h2>我的待办事项</h2>
-        <textarea id="todoList" rows="10" cols="50" placeholder="请输入今天的待办事项..."></textarea>
+    <!-- Replace To-Do List with Mathematical Questions -->
+    <section id="math-questions">
+        <h2>My Mathematical Questions</h2>
+        <textarea id="mathQuestionInput" rows="10" cols="50" placeholder="Enter a mathematical problem or question..."></textarea>
         <br>
-        <button onclick="saveToDoList()">保存待办事项</button>
-        <div id="savedList"></div>
+        <button onclick="saveMathQuestion()">Save Question</button>
+        <br><br>
+        <div id="savedMathQuestions"></div>
+    </section>
+
+    <section id="interests">
+        <h2>My Interests</h2>
+        <textarea id="interestsList" rows="10" cols="50" placeholder="Write down the topics that interest you..."></textarea>
+        <br>
+        <button onclick="saveInterests()">Save Interests</button>
+        <div id="savedInterests"></div>
     </section>
 
     <footer>
-        <p>&copy; 2025 华光辉. 版权所有。</p>
+        <p>&copy; 2025 Guanghui Hua. All Rights Reserved.</p>
     </footer>
 
     <script>
-        function saveToDoList() {
-            const todoList = document.getElementById('todoList').value;
-            const savedList = document.getElementById('savedList');
-            if (todoList.trim()) {
+        // Save mathematical question to localStorage
+        function saveMathQuestion() {
+            const question = document.getElementById('mathQuestionInput').value.trim();
+            if (question) {
+                const savedQuestions = document.getElementById('savedMathQuestions');
                 const newItem = document.createElement('p');
-                newItem.textContent = todoList;
-                savedList.appendChild(newItem);
-                document.getElementById('todoList').value = ''; // 清空输入框
+                newItem.textContent = question;
+                savedQuestions.appendChild(newItem);
+                document.getElementById('mathQuestionInput').value = ''; // Clear input
             } else {
-                alert('请输入待办事项！');
+                alert('Please enter a mathematical question!');
+            }
+        }
+
+        // Save interests to localStorage
+        function saveInterests() {
+            const interests = document.getElementById('interestsList').value.trim();
+            const savedInterests = document.getElementById('savedInterests');
+
+            if (interests) {
+                const newItem = document.createElement('p');
+                newItem.textContent = interests;
+                savedInterests.appendChild(newItem);
+                document.getElementById('interestsList').value = ''; // Clear input
+            } else {
+                alert('Please enter an interest!');
             }
         }
     </script>
 </body>
 </html>
-
-
