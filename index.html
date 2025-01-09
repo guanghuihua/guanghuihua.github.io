@@ -1,46 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Your Name - Personal Website</title>
+    <title>华光辉的个人网站</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Welcome to My Personal Website</h1>
+        <h1>欢迎来到华光辉的个人网站</h1>
         <nav>
             <ul>
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#about">关于我</a></li>
+                <li><a href="#blogs">我的博客</a></li>
+                <li><a href="#todo">我的待办</a></li>
             </ul>
         </nav>
     </header>
 
     <section id="about">
-        <h2>About Me</h2>
-        <p>Hello! I'm <strong>Your Name</strong>, a student of Applied Mathematics at XYZ University. I love exploring mathematical concepts and solving complex problems using computational methods.</p>
+        <h2>关于我</h2>
+        <p>您好！我是<strong>华光辉</strong>，一名应用数学专业的学生，热衷于数学建模和计算方法的应用。</p>
+        <p>您可以通过以下联系方式与我联系：<a href="mailto:guanghui-hua@qq.com">guanghui-hua@qq.com</a></p>
     </section>
 
-    <section id="projects">
-        <h2>My Projects</h2>
+    <section id="blogs">
+        <h2>我的博客</h2>
+        <p>我写了两个博客，分别记录了我的工作和生活内容：</p>
         <ul>
-            <li><a href="#">Project 1: Description</a></li>
-            <li><a href="#">Project 2: Description</a></li>
-            <li><a href="#">Project 3: Description</a></li>
+            <li><a href="https://www.cnblogs.com/guanghui-hua" target="_blank">工作内容博客</a></li>
+            <li><a href="https://www.blogger.com/blog/posts/5821182636632071255?pli=1" target="_blank">生活内容博客</a></li>
         </ul>
     </section>
 
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <p>Feel free to reach out to me at <a href="mailto:your.email@example.com">your.email@example.com</a>.</p>
+    <section id="todo">
+        <h2>我的待办事项</h2>
+        <textarea id="todoList" rows="10" cols="50" placeholder="请输入今天的待办事项..."></textarea>
+        <br>
+        <button onclick="saveToDoList()">保存待办事项</button>
+        <div id="savedList"></div>
     </section>
 
     <footer>
-        <p>&copy; 2025 Your Name. All Rights Reserved.</p>
+        <p>&copy; 2025 华光辉. 版权所有。</p>
     </footer>
+
+    <script>
+        function saveToDoList() {
+            const todoList = document.getElementById('todoList').value;
+            const savedList = document.getElementById('savedList');
+            if (todoList.trim()) {
+                const newItem = document.createElement('p');
+                newItem.textContent = todoList;
+                savedList.appendChild(newItem);
+                document.getElementById('todoList').value = ''; // 清空输入框
+            } else {
+                alert('请输入待办事项！');
+            }
+        }
+    </script>
 </body>
 </html>
 
