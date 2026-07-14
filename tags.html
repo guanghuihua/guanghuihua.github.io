@@ -1,0 +1,33 @@
+---
+layout: default
+title: 标签
+permalink: /tags/
+description: 按主题浏览日记与思考。
+---
+
+<header class="page-header">
+  <p class="eyebrow">TOPICS</p>
+  <h1>按主题阅读</h1>
+  <p>生活有许多侧面，文字也有不同的方向。</p>
+</header>
+
+<section class="tag-groups">
+  {% assign sorted_tags = site.tags | sort %}
+  {% for tag in sorted_tags %}
+    {% assign tag_name = tag | first %}
+    {% assign tag_posts = tag | last %}
+    <div class="tag-group">
+      <h2>{{ tag_name }} <span>{{ tag_posts.size }}</span></h2>
+      <ul>
+        {% for post in tag_posts %}
+          <li>
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time>
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% else %}
+    <p class="empty-state">有了第一篇日记，标签也会出现在这里。</p>
+  {% endfor %}
+</section>

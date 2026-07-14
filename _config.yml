@@ -1,0 +1,20 @@
+title: 光辉的日记
+description: 记录生活、学习与思考
+url: "https://guanghuihua.github.io"
+baseurl: ""
+lang: zh-CN
+timezone: Asia/Shanghai
+
+permalink: /diary/:year/:month/:day/:title/
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock

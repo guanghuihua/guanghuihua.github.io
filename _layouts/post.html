@@ -1,0 +1,39 @@
+---
+layout: default
+---
+
+<article class="post-page">
+  <header class="post-header">
+    <a class="back-link" href="{{ '/archive/' | relative_url }}">← 返回归档</a>
+    <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y年%m月%d日" }}</time>
+    <h1>{{ page.title }}</h1>
+    {% if page.tags.size > 0 %}
+      <ul class="tag-list centered" aria-label="标签">
+        {% for tag in page.tags %}<li>{{ tag }}</li>{% endfor %}
+      </ul>
+    {% endif %}
+  </header>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  {% if page.original_url %}
+    <p class="original-source">本文由旧博客迁移而来。<a href="{{ page.original_url }}" target="_blank" rel="noopener noreferrer">查看原文 ↗</a></p>
+  {% endif %}
+
+  <footer class="post-navigation">
+    <div>
+      {% if page.previous %}
+        <span>上一篇</span>
+        <a href="{{ page.previous.url | relative_url }}">{{ page.previous.title }}</a>
+      {% endif %}
+    </div>
+    <div class="next-post">
+      {% if page.next %}
+        <span>下一篇</span>
+        <a href="{{ page.next.url | relative_url }}">{{ page.next.title }}</a>
+      {% endif %}
+    </div>
+  </footer>
+</article>

@@ -1,50 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Guanghui Hua's Personal Website</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header>
-        <h1>Welcome to Guanghui Hua's Personal Website</h1>
-        <nav>
-            <ul>
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#blogs">My Blogs</a></li>
-                <li><a href="#math-questions">Mathematical Questions</a></li>
-            </ul>
-        </nav>
-    </header>
+---
+layout: default
+title: 首页
+description: 记录生活、学习与思考。
+---
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p>Hello! I'm <strong>Guanghui Hua</strong>, a student majoring in Applied Mathematics. I am passionate about mathematical modeling and computational methods.</p>
-        <p>You can contact me at <a href="mailto:guanghui-hua@qq.com">guanghui-hua@qq.com</a>.</p>
-    </section>
+<section class="hero">
+  <p class="eyebrow">GUANGHUI'S JOURNAL</p>
+  <h1>把寻常的日子，<br>认真地记下来。</h1>
+  <p class="hero-description">这里记录我的日常、学习、数学，以及偶尔浮现的想法。写给现在，也写给未来回望时的自己。</p>
+  <a class="text-link" href="#latest">阅读最近的记录 <span aria-hidden="true">→</span></a>
+</section>
 
-    <section id="blogs">
-        <h2>My Blogs</h2>
-        <p>I write two blogs to document my work and personal life:</p>
-        <ul>
-            <li><a href="https://www.cnblogs.com/guanghui-hua" target="_blank">Work Blog</a></li>
-            <li><a href="https://www.blogger.com/blog/posts/5821182636632071255?pli=1" target="_blank">Life Blog</a></li>
-            <li><a href="https://www.overleaf.com/project" target="_blank">Mathematical Notes (Overleaf)</a></li>
-        </ul>
-    </section>
+<section class="content-section" id="latest">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">RECENT NOTES</p>
+      <h2>最近记录</h2>
+    </div>
+    <a class="quiet-link" href="{{ '/archive/' | relative_url }}">查看全部</a>
+  </div>
 
-    <!-- Replace To-Do List with Mathematical Questions -->
-    <section id="math-questions">
-        <h2>My problem</h2>
-        <textarea id="mathQuestionInput" rows="10" cols="50" placeholder="Only with good and interesting problems can there be an endless source of motivation."> 非线性问题;动力系统;神经网络; </textarea>
-        <div id="savedMathQuestions"></div>
-    </section>
+  {% if site.posts.size > 0 %}
+    <div class="post-list">
+      {% for post in site.posts limit: 6 %}
+        <article class="post-preview">
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time>
+          <div>
+            <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+            {% if post.excerpt %}
+              <p>{{ post.excerpt | strip_html | truncate: 110 }}</p>
+            {% endif %}
+            {% if post.tags.size > 0 %}
+              <ul class="tag-list" aria-label="标签">
+                {% for tag in post.tags %}<li>{{ tag }}</li>{% endfor %}
+              </ul>
+            {% endif %}
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="empty-state">第一篇记录正在路上。</p>
+  {% endif %}
+</section>
 
-    <footer>
-        <p>&copy; 2025 Guanghui Hua. All Rights Reserved.</p>
-    </footer>
-
-</body>
-</html>
+<aside class="quote-card">
+  <p>“生活不是等待被记住的事情，而是在记录中慢慢显现的自己。”</p>
+  <span>写在日常里</span>
+</aside>
