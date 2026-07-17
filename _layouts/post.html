@@ -19,7 +19,7 @@ layout: default
   </div>
 
   {% if page.original_url %}
-    <p class="original-source">本文由旧博客迁移而来。<a href="{{ page.original_url }}" target="_blank" rel="noopener noreferrer">查看原文 ↗</a></p>
+    <p class="original-source">{% if page.source_note %}{{ page.source_note }}。{% else %}本文由旧博客迁移而来。{% endif %}<a href="{{ page.original_url }}" target="_blank" rel="noopener noreferrer">查看原文 ↗</a></p>
   {% endif %}
 
   <footer class="post-navigation">
