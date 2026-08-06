@@ -1,0 +1,48 @@
+{
+  "name": "auto-sync-on-close",
+  "displayName": "Guanghui Auto Sync on Close",
+  "description": "关闭指定 VS Code 工作区后，在后台自动提交并同步 Git 改动。",
+  "version": "0.1.1",
+  "publisher": "guanghui",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "extensionKind": [
+    "workspace"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./extension.js",
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": false
+    }
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "guanghuiAutoSync.syncNow",
+        "title": "Auto Sync on Close: Sync Now"
+      },
+      {
+        "command": "guanghuiAutoSync.showLog",
+        "title": "Auto Sync on Close: Show Log"
+      }
+    ],
+    "configuration": {
+      "title": "Guanghui Auto Sync on Close",
+      "properties": {
+        "guanghuiAutoSync.enabled": {
+          "type": "boolean",
+          "default": false,
+          "scope": "resource",
+          "description": "关闭当前工作区时，启动后台 Git 自动同步。"
+        }
+      }
+    }
+  }
+}
